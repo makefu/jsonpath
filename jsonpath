@@ -1,0 +1,27 @@
+#!/usr/bin/python
+from jsonpath_rw import parse
+import json
+import sys
+if len(sys.argv) < 2:
+    print("""usage: %s jsonpath
+path can be:
+    atomics:
+        $              - root object
+        `this`         - current object
+
+    operators:
+        path1.path2    - same as xpath /
+        path1|path2    - union
+        path1..path2   - somewhere in between
+
+    fiels:
+        fieldname       - field with name
+        *               - any field
+        [_start_?:_end_?] - array slice
+        [*]             - any array index
+""")
+    sys.exit(1)
+path = sys.argv[1]
+# see https://github.com/kennknowles/python-jsonpath-rw
+print(" ".join([str(match.value) for match in parse(path).find(
+    json.load(sys.stdin))]))
