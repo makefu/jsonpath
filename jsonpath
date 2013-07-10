@@ -22,6 +22,5 @@ path can be:
 """)
     sys.exit(1)
 path = sys.argv[1]
-# see https://github.com/kennknowles/python-jsonpath-rw
 print(" ".join([str(match.value) for match in parse(path).find(
     json.load(sys.stdin))]))
