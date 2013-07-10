@@ -1,0 +1,7 @@
+# JSONPATH
+a simple command line wrapper for jsonpath_rw for python
+
+# install
+
+    pip install jsonpath_rw
+    ./jsonpath
